@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import {Link as LinkR}  from 'react-router-dom'
 import {Link as LinkS} from 'react-scroll'
 
-export const Nav = styled.nav`
+export const NavWrapper = styled.nav`
     background: ${({scrollNav}) => (scrollNav ? '#cfdee3' : '#C0C7C7')};
     height: 80px;
     display: flex;

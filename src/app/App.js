@@ -11,7 +11,6 @@ function App() {
      <PayPalScriptProvider>
        <Layout>
          <RoutesComponent />
-         <Home />
        </Layout>
      </PayPalScriptProvider>
    </UserProvider>
