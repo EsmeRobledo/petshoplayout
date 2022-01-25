@@ -25,3 +25,28 @@ export const loginService = async (user) =>{
     }
     
 }
+
+export const editUserService = async (user) =>{
+    try{
+        
+        const resp = await axios.put(`${URL_ROOT}/editUser`, user)
+        return resp.data
+        
+    }catch(e){
+        console.log('1', e.data.message)
+        console.log('2', e.message)
+    }
+}
+
+export const getUserProfile = async (user) =>{
+    try{
+
+        const resp = await axios.get(`${URL_ROOT}/profile`, user)
+        return resp.data
+
+    }catch(e){
+        console.log('1', e.data.message)
+        console.log('2', e.message)
+    }
+
+}

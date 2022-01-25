@@ -1,8 +1,8 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import {Navigate} from 'react-router-dom'
 import {SignupService} from '../../Services'
 import { UserContext } from '../../context/UserContext';
-import {Container, FormWrap, FormContent, Form, FormH1, FormH2, FormLabel, FormInput, FormButtom, DivWrapper, Divformwrap } from './SignupElements'
+import {Container, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, FormButtom, DivWrapper, Divformwrap } from './SignupElements'
 
 const  Signup = () => {
     const{saveToken, user: token} = useContext(UserContext);
@@ -16,12 +16,13 @@ const  Signup = () => {
         e.target.reset(); 
 
     };
+    const redirect = <Navigate to='/' />
     return(
-        
+        token ? redirect :
             <Container>
                 <FormWrap>
                 <FormContent>
-                    <Form onSubmit={onSubmit}>
+                 <Form onSubmit={onSubmit}>
                     <FormH1>Registrate para comprar en linea</FormH1>
                     <DivWrapper>
                       <Divformwrap>
@@ -29,6 +30,8 @@ const  Signup = () => {
                         <FormInput type='nombre' name="firstname" required />
                         <FormLabel htmlFor='for'>Apellido:</FormLabel>
                         <FormInput type='apellido' name="lastname" required />
+                        <FormLabel htmlFor='for'>Sexo:</FormLabel>
+                        <FormInput type='sexo' name="gender" required />
                         <FormLabel htmlFor='for'>Email:</FormLabel>
                         <FormInput type='email' name="mail" required />
                         <FormLabel htmlFor='for'>Telefono:</FormLabel>
@@ -37,7 +40,6 @@ const  Signup = () => {
                         <FormInput type='password' name="password" required />
                      </Divformwrap>
                       <Divformwrap>
-                        <FormH2>Ingresa la direccion que usaras para tus pedidos</FormH2>
                         <FormLabel htmlFor='for'>Calle y Numero:</FormLabel>
                         <FormInput type='nombre' name="Street" required />
                         <FormLabel htmlFor='for'>Ciudad:</FormLabel>

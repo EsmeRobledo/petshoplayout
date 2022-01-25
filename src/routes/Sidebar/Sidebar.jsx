@@ -12,8 +12,8 @@ const Sidebar = ({isOpen, toggle}) =>{
         </Icon>
         <SidebarWrapper>
             <SidebarMenu>
-                <SidebarLink to='Shopforpet' onClick={toggle} > Comprar en linea</SidebarLink>
-                <SidebarLink to='PetServices' onClick={toggle} > Servicios</SidebarLink>
+                <SidebarLink to='/' onClick={toggle} > Comprar en linea</SidebarLink>
+                <SidebarLink to='/' onClick={toggle} > Servicios</SidebarLink>
                 <SidebarLinkRoute to='/help' onClick={toggle} > Ayuda</SidebarLinkRoute>
                 <SidebarLinkRoute to='/signup' onClick={toggle} > Sign up</SidebarLinkRoute>
             </SidebarMenu>

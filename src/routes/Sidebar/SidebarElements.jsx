@@ -16,11 +16,10 @@ export const SidebarContainer = styled.aside`
     transition: 0.3s ease-in-out;
    opacity:${({ isOpen })=> (isOpen ? '100%' : '0')};
     top: ${({isOpen}) => (isOpen ? '0' : '-100%')};
-    /*top: 0;*/
 `;
 
 export const CloseIcon = styled(FaTimes)`
-    color: white;
+    color: black;
 `;
 
 export const Icon = styled.div`
@@ -34,7 +33,7 @@ export const Icon = styled.div`
 `;
 
 export const SidebarWrapper = styled.div`
-    color: #fff;
+    color: black;
 
 `;
 export const SidebarMenu = styled.ul`
@@ -70,7 +69,7 @@ export const SideBtnWrap = styled.div`
 `
 export const SidebarRoute = styled(LinkR)`
     border-radius: 50px;
-    background: red;
+    background: #99cccc;
     white-space: nowrap;
     padding: 16px 64px;
     color: white;
@@ -83,7 +82,7 @@ export const SidebarRoute = styled(LinkR)`
 
     &:hover{
         transition: all 0.2s ease-in-out;
-        background: #fff;
+        background: #cfdee3;
         color: black;
     }
 `
@@ -100,7 +99,7 @@ export const SidebarLinkRoute = styled(LinkR)`
     cursor: pointer;
 
     &:hover{
-        color: red;
+        color: #cfdee3;
         transition: 0.2s ease-in-out;
     }
 `

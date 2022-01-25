@@ -21,6 +21,7 @@ export const FormWrap = styled.div`
     @media screen and (max-width: 400px){
       max-height: 750px;
       position: fixed;
+      flex-direction: row;
   }
 `
 
@@ -29,6 +30,7 @@ export const FormContent = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+   
   
 `
 
@@ -43,7 +45,11 @@ export const Form = styled.form`
   padding: 80px 32px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-
+  
+  @media screen and (max-width: 400px){
+    max-height: 1100px;
+    max-width: 400px;
+  }
  
 `
 export const DivWrapper = styled.div`
@@ -62,7 +68,7 @@ export const Divformwrap = styled.div`
   flex-direction: column;
   justify-content: center;
   @media screen and (max-width: 400px){
-    max-width: 350px;
+    max-height: 2100px;
   }
 `
 

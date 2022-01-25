@@ -3,6 +3,7 @@ import { UserContext } from "../../context/UserContext";
 import { Navigation } from "../../routes/Navigation";
 import {Sidebar} from "../../routes/Sidebar/Sidebar"
 
+
 const Layout = ({children}) => {
     const {saveToken, clearToken } = useContext(UserContext)
     const verifyToken = () => {
@@ -26,6 +27,7 @@ const Layout = ({children}) => {
             <Sidebar isOpen={isOpen} toggle={toggle}/>
             <Navigation toggle={toggle} />
             {children}
+           
         </>
     )
 }
