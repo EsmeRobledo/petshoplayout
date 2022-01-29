@@ -26,6 +26,13 @@ function Navigation({toggle}){
     const toggleHome = () => {
         scroll.scrollToTop();
     }
+    let isAdmin = false;
+    const usertype = localStorage.getItem('isAdmin');
+    if(usertype !== null){
+        isAdmin = usertype
+    }else{
+        isAdmin = false;
+    }
     const {user: token = null} = useContext(UserContext);
 
    return (
@@ -50,9 +57,9 @@ function Navigation({toggle}){
             <NavItem>
                  <NavLinksR to='/profile'>Profile</NavLinksR>
             </NavItem>
-            <NavItem>
+            {isAdmin? <NavItem>
                  <NavLinksR to='/product'>Products</NavLinksR>
-            </NavItem>
+            </NavItem> :<NavItem></NavItem>}
             <NavItem>
                  <NavLinksR to='/logout' >Logout</NavLinksR>
             </NavItem>

@@ -1,7 +1,7 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {Navigate} from 'react-router-dom';
 import {UserContext} from '../../context/UserContext';
-import { loginService } from '../../Services';
+import { loginService, getCategory } from '../../Services';
 import {Container, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, FormButtom} from './SigninElements'
 
 
@@ -9,15 +9,26 @@ import {Container, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, Fo
 
 const  Signin = () => {
     const{saveToken, user: token} = useContext(UserContext);
+    const [isAdmin, setisAdmin] = useState(false);
 
     const onSubmit = async (e) => {
-        e.preventDEfault();
+        e.preventDefault();
         const formData = new FormData(e.target);
-        const dataObject = Object.formEntries(formData)
+        const dataObject = Object.fromEntries(formData)
         const user = await loginService(dataObject);
+        const category = await getCategory(dataObject);
         saveToken(user.detail);
+        userCategory(category.detail._id, category.detail.type)
         e.target.reset();
     };
+
+    const userCategory = (UserId, category)=>{
+        if(category === 'admin'){
+            setisAdmin(true)
+        }
+        localStorage.setItem('iduser', UserId);
+        localStorage.setItem('isAdmin', isAdmin);
+    }
     const redirect = <Navigate to='/' />
     return(
         token ? redirect :

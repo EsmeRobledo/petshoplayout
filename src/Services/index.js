@@ -2,7 +2,8 @@ export {
  SignupService, 
  loginService,
  getUserProfile,
- editUserService } from './users';
+ editUserService,
+ getCategory } from './users';
 
 
 
