@@ -3,7 +3,8 @@ export {
  loginService,
  getUserProfile,
  editUserService,
- getCategory } from './users';
+ getCategory,
+ deleteProfile } from './users';
 
 
 

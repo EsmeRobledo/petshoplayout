@@ -49,9 +49,11 @@ export const editUserService = async (user) =>{
     }
 }
 
-export const getUserProfile = async (id) =>{
+export const getUserProfile = async () =>{
     try{
-        const resp = await axios.get(`${URL_LOCAL}/profile/${id}`);
+        const resp = await axios.get(`${URL_ROOT}/profile`,{
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+            });
         return resp.data
 
     }catch(e){
@@ -59,4 +61,16 @@ export const getUserProfile = async (id) =>{
         console.log('2', e.message)
     }
 
+}
+
+
+export const deleteProfile = async () =>{
+    try{
+        const resp = await axios.delete(`${URL_ROOT}/delete`,{
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+            });
+    }catch(e){
+        console.log('1', e.data.message)
+        console.log('2', e.message)
+    }
 }

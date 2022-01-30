@@ -1,15 +1,11 @@
 import React from 'react'
 import { FormLabel } from 'react-bootstrap'
-import {} from '../../Services/products'
 
 function ProductForm() {
 
 const handleOnSubmit = (event) =>{
     event.preventDefault()
     const fromData = new FormData(event.target)
-
-    const resp = 
-
 }
     return(
         <>
@@ -35,6 +31,9 @@ const handleOnSubmit = (event) =>{
                    </Form>
                 </ProductForm>
             </ProductFormWrapper>
+            <ProductList>
+                
+            </ProductList>
         </ProductFormContainer>
         </>
     )

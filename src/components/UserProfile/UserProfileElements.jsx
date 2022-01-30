@@ -69,6 +69,24 @@ background: #5B8FBF;
 }
 
 `
+
+export const BtnAccept = styled.button`
+  background: #5B8FBF;
+  padding: 10px 0;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 20 px;
+  margin-top: 5px;
+  gap: 10px;
+  cursor: pointer; 
+
+  @media screen and (max-width: 400px){
+    font-size: 16 px;
+    margin-top: 0;
+    gap: 5px;
+}
+`
 export const BtnElim = styled.button`
 background: #5B8FBF;
   padding: 10px 0;
@@ -150,8 +168,13 @@ export const Form = styled.form`
 export const LabelText = styled.label`
     margin-bottom: 8px;
     font-size: 14px;
-    color: #194853;
+    color: #3B7F93;
 `
+
+export const LabelTextValue = styled.label`
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #163139;`
 
 export const FormInput = styled.input`
     padding: 16px 16px;
