@@ -9,7 +9,7 @@ import Checkout from "../components/Checkout/Checkout"
 import Logout from './../components/Logout/Logout';
 import UserProfile from './../components/UserProfile/UserProfile';
 import Shopforsection from '../components/PetShopList/Shopsection/Shopforsection'
-
+import ProductForm from '../components/ProductActions/ProductForm'
 
 const RoutesComponent = () => (
     <Routes>
@@ -18,6 +18,7 @@ const RoutesComponent = () => (
         <Route path="/signup" element={<Signup />}  />
         <Route path="/signin" element={<Signin />}  />
         <Route path="/shopSection/:id" element={<Shopforsection/>}/>
+        <Route path="/Products" element={ProductForm} />
         <Route path="/checkout" element={<PrivateRoutes><Checkout/></PrivateRoutes>} />
         <Route path="/logout" element={<PrivateRoutes><Logout /></PrivateRoutes>} />
         <Route path="/profile" element={<PrivateRoutes><UserProfile /></PrivateRoutes>} />

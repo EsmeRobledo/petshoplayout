@@ -9,6 +9,7 @@ export const ProfileWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: left;
+    flex-wrap: wrap
     margin-top: 50px;
     margin-left: 50px;
     gap: 50px;
@@ -164,7 +165,36 @@ export const Form = styled.form`
     max-width: 400px;
   }
 `
+export const PassWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  padding: 20px;
+  margin-top: 30px
+  flex-direction: row;
+  justify-content: center;
+  @media screen and (max-width: 400px){
+    max-height: 2100px;
+  }
 
+`
+
+export const FormPass = styled.form`
+  background: #D0E0E3;
+  max-width: 700px;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  
+  @media screen and (max-width: 400px){
+    max-height: 1100px;
+    max-width: 400px;
+  }
+`
 export const LabelText = styled.label`
     margin-bottom: 8px;
     font-size: 14px;

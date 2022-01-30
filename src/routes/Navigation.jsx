@@ -13,6 +13,7 @@ import getUserProfile from '../Services'
    
 function Navigation({toggle}){
     const [scrollNav, setScroolNav] = useState(false)
+    const [isAdmin, setisAdmin] = useState(false)
     const changeNav = ()=> {
         if(window.scrollY >= 80){
             setScroolNav(true)
@@ -26,12 +27,12 @@ function Navigation({toggle}){
     const toggleHome = () => {
         scroll.scrollToTop();
     }
-    let isAdmin = false;
+   
     const usertype = localStorage.getItem('isAdmin');
-    if(usertype !== null){
-        isAdmin = usertype
+    if(usertype !== null && usertype === 'admin'){
+       setisAdmin(true)
     }else{
-        isAdmin = false;
+        setisAdmin(!isAdmin);
     }
     const {user: token = null} = useContext(UserContext);
 
@@ -58,8 +59,8 @@ function Navigation({toggle}){
                  <NavLinksR to='/profile'>Profile</NavLinksR>
             </NavItem>
             {isAdmin? <NavItem>
-                 <NavLinksR to='/product'>Products</NavLinksR>
-            </NavItem> :<NavItem></NavItem>}
+                 <NavLinksR to='/Products'>Products</NavLinksR>
+            </NavItem> : null}
             <NavItem>
                  <NavLinksR to='/logout' >Logout</NavLinksR>
             </NavItem>

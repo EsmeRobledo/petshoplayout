@@ -1,8 +1,8 @@
-import React from 'react'
-import { FormLabel } from 'react-bootstrap'
+import React, { useState } from 'react'
+import {ProductFormContainer, ProductFormWrapper, ProductFormwrapper, Form, FormLabel, FormInput, BtnForm, ProductList} from './ProductFormElements'
 
 function ProductForm() {
-
+const [product, setProduct] = useState('')
 const handleOnSubmit = (event) =>{
     event.preventDefault()
     const fromData = new FormData(event.target)
@@ -11,7 +11,7 @@ const handleOnSubmit = (event) =>{
         <>
         <ProductFormContainer>
             <ProductFormWrapper>
-                <ProductForm>
+                <ProductFormwrapper>
                    <Form onSubmit={handleOnSubmit}>
                    <FormLabel>Product Name:</FormLabel>
                     <FormInput name='productName' type='text'/>
@@ -29,7 +29,7 @@ const handleOnSubmit = (event) =>{
                     <FormInput name='img' type='file'/>
                     <BtnForm type='submit'>Add Product</BtnForm>
                    </Form>
-                </ProductForm>
+                </ProductFormwrapper>
             </ProductFormWrapper>
             <ProductList>
                 
@@ -38,3 +38,5 @@ const handleOnSubmit = (event) =>{
         </>
     )
 }
+
+export default ProductForm;

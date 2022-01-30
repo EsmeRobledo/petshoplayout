@@ -39,13 +39,17 @@ export const getCategory = async (user) =>{
 
 export const editUserService = async (user) =>{
     try{
-        
-        const resp = await axios.put(`${URL_ROOT}/editUser`, user)
-        return resp.data
+        console.log(localStorage.getItem('token'))
+        const resp = await fetch(`${URL_ROOT}/editUser`, {
+            method:'PUT',
+            headers: { Authorization: 'Bearer ' + localStorage.getItem('token'), 'Content-Type': 'application/json' }, 
+            body: JSON.stringify(user)
+        })
+        const jsonres = await resp.json()
+        return jsonres
         
     }catch(e){
-        console.log('1', e.data.message)
-        console.log('2', e.message)
+        console.error(e)
     }
 }
 
@@ -72,5 +76,22 @@ export const deleteProfile = async () =>{
     }catch(e){
         console.log('1', e.data.message)
         console.log('2', e.message)
+    }
+}
+
+
+export const editPassword = async (user) =>{
+    try{
+        console.log(localStorage.getItem('token'))
+        const resp = await fetch(`${URL_ROOT}/editUser`, {
+            method:'PUT',
+            headers: { Authorization: 'Bearer ' + localStorage.getItem('token'), 'Content-Type': 'application/json' }, 
+            body: JSON.stringify(user)
+        })
+        const jsonres = await resp.json()
+        return jsonres
+        
+    }catch(e){
+        console.error(e)
     }
 }

@@ -4,7 +4,8 @@ export {
  getUserProfile,
  editUserService,
  getCategory,
- deleteProfile } from './users';
+ deleteProfile,
+ editPassword } from './users';
 
 
 
