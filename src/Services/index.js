@@ -10,7 +10,10 @@ export {
 
 
  export {
-    getProducts
+    getProducts,
+    getProductsList,
+    newProduct,
+    getProductInfo
 
  } from './products'
 

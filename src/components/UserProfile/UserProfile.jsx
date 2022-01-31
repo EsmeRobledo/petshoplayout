@@ -1,26 +1,22 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect, useContext, useRef} from 'react'
 import {ProfileContainer, ProfileWrapper, ProfileContent, 
     ImageContainer, ImageProfile, BtnContainer, BtnEdit,
-    BtnElim, PersonalInfoContainer,BtnAccept, Form,FormPass, InfoH2, PassWrapper, LabelText,FormInput, BtnPassword} from './UserProfileElements'
+    BtnElim, PersonalInfoContainer,BtnAccept, Form,FormPass, InfoH2,Wrapper, PassWrapper, LabelText,FormInput, BtnPassword, Container} from './UserProfileElements'
 import maleavatar from '../../images/undraw_male_avatar_323b.svg'
-import femaleavatar from '../../images/undraw_female_avatar_w3jk.svg'
 import {getUserProfile, deleteProfile, editUserService, editPassword} from '../../Services'
 import { UserContext } from '../../context/UserContext'
 import { Navigate } from 'react-router-dom'
+
 
 
 const UserProfile = () =>{
    const {clearToken} = useContext(UserContext);
    const [user, setUser] = useState([]);
    const [edit, setEdit] = useState(false)
-   const [password, setPassword] = useState("") 
    const [modPass, setModPass] = useState(false)
-   const [newPass, setNewPass] = useState("")
-
+   
    const updateVal = async () =>{
-       console.log("user value",  user)
         const resp = await editUserService(user);
-        console.log(resp);
         alert('Your user have been updated')
         setUser(resp.detail)
         setEdit(!edit)
@@ -32,8 +28,14 @@ const UserProfile = () =>{
         updateVal()
     }
     if(modPass){
-        editPassword(password, newPass)
+        const formData = new FormData(e.target);
+        const dataObject = Object.fromEntries(formData)
+        editPassword(dataObject);
+       alert("Password have been modified")
+       setModPass(false)
+       return null
     }
+   
       
     }
    const getUserInfo = async () =>{
@@ -55,22 +57,23 @@ const UserProfile = () =>{
    }
    const editOnckick = () =>{
     setEdit(true)
+    setModPass(false)
    }
    const passwordOnckick =() =>{
         setModPass(true)
+        setEdit(false)
    }
    const handleOnChange = (e) => {
-    if(edit){
         setUser({...user,
             [e.target.name]: e.target.value || ""
         })
-    }
-    if(modPass){
-        setPassword({[e.target.name]: e.target.value || ""})
-        setNewPass({[e.target.name]: e.target.value || ""})
-    }
-    
-}
+  }
+
+  const cancelOnClick = (e) => {
+    e.preventDefault();
+    setModPass(false)
+    setEdit(false)
+  }
 
      useEffect(() =>{
         getUserInfo()
@@ -81,7 +84,7 @@ const UserProfile = () =>{
                 <ProfileWrapper>
                     <ProfileContent>
                         <ImageContainer>
-                            <ImageProfile src={maleavatar}></ImageProfile>
+                             <ImageProfile src={maleavatar}></ImageProfile>
                         </ImageContainer>
                         <BtnContainer>
                                 <BtnEdit variant="warning" onClick={() => editOnckick()}>Edit Profile</BtnEdit>
@@ -90,6 +93,7 @@ const UserProfile = () =>{
                         </BtnContainer>
                     </ProfileContent>
                     <Form onSubmit={onSubmit}>
+                   
                         <PersonalInfoContainer>
                             <InfoH2>Personal Information</InfoH2>
                                  <LabelText>Name:</LabelText><FormInput type='text' value={user.firstname} required name="firstname" disabled={!edit} onChange={handleOnChange} />
@@ -104,17 +108,25 @@ const UserProfile = () =>{
                                  <LabelText>State:</LabelText> <FormInput type='text' required value={user.State} name="State" disabled={!edit} onChange={handleOnChange} />  
                                  <LabelText>P.C:</LabelText>  <FormInput type='text' required value={user.PC} name="PC" disabled={!edit}  onChange={handleOnChange}/> 
                         </PersonalInfoContainer>
-                        {edit? <BtnContainer> <BtnAccept disabled={!edit}  type='submit'>Save</BtnAccept></BtnContainer> : null}
-                       
-                    </Form>
+                        {edit? 
+                        <Wrapper>
+                            <BtnContainer> <BtnAccept type='submit'>Save</BtnAccept>
+                                              <BtnAccept onClick={cancelOnClick} >Cancel</BtnAccept></BtnContainer>
+                        </Wrapper>
+                         : null}
+                     </Form>
                   {modPass ?
-                  <PassWrapper>
+                  <Container>
+                      <PassWrapper>
                       <FormPass onSubmit={onSubmit}>
-                           <LabelText>old Password:</LabelText> <FormInput type='text' required value="" name="password" onChange={handleOnChange} />      
-                           <LabelText>New Password:</LabelText>  <FormInput type='text' required value=""  name="newPass" onChange={handleOnChange} />
-                           <BtnContainer> <BtnAccept type='submit'>Save</BtnAccept></BtnContainer> 
+                           <LabelText>old Password:</LabelText> <FormInput type='password' placeholder="oldPassword" name="oldPassword" required />      
+                           <LabelText>New Password:</LabelText>  <FormInput type='password'  placeholder="newPassword"  name="newPassword" required />
+                           <BtnContainer> <BtnAccept type='submit'>Save</BtnAccept>
+                                          <BtnAccept onClick={cancelOnClick} >Cancel</BtnAccept></BtnContainer> 
                       </FormPass>
                   </PassWrapper>
+                  </Container>
+                  
                   : null}
                 </ProfileWrapper>
             </ProfileContainer>

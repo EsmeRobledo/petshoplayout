@@ -13,9 +13,9 @@ const  Signup = () => {
         const user = await SignupService(dataObject)
         saveToken(user.detail)
         console.log('data: '+ dataObject)
+        localStorage.setItem('isAdmin', false);
         e.target.reset(); 
-
-    };
+     };
     const redirect = <Navigate to='/' />
     return(
         token ? redirect :

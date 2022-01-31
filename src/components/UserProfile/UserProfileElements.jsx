@@ -44,6 +44,7 @@ export const ImageProfile = styled.img`
   margin-left: auto;
   margin-right: auto;
 `
+
 export const BtnContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -53,7 +54,7 @@ export const BtnContainer = styled.div`
 
 `
 export const BtnEdit = styled.button`
-background: #5B8FBF;
+  background: #5B8FBF;
   padding: 10px 0;
   border: none;
   border-radius: 4px;
@@ -147,9 +148,18 @@ export const BtnPassword = styled.button`
     gap: 5px;
 }
 
-`        
+`   
+
+export const Wrapper = styled.div`
+  height: 200px;
+  width: 200px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+`
 export const Form = styled.form`
-  background: #D0E0E3;
+  background: #99cccc;
   max-width: 700px;
   height: auto;
   width: 100%;
@@ -177,27 +187,26 @@ export const PassWrapper = styled.div`
   }
 
 `
-
+export const Container = styled.div`
+display: flex;
+justify-content: space-between;
+  width: 400px;
+  height: 200px;
+`
 export const FormPass = styled.form`
-  background: #D0E0E3;
-  max-width: 700px;
+  background: #99cccc;  
+  max-width: 400px;
   height: auto;
-  width: 100%;
-  z-index: 1;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
-  
-  @media screen and (max-width: 400px){
-    max-height: 1100px;
-    max-width: 400px;
-  }
+  margin-left: 50px;
 `
 export const LabelText = styled.label`
     margin-bottom: 8px;
-    font-size: 14px;
+    font-size: 18px;
     color: #3B7F93;
 `
 

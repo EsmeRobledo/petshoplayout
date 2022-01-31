@@ -2,18 +2,13 @@ import React, {useState, useEffect, useContext} from "react";
 import {animateScroll as scroll} from 'react-scroll'
 import {NavWrapper, NavbarContainer, NavLogo, 
     MobileIcon, 
-    NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, NavLinksR, NavButtonsdiv} from "./NavbarElements"
+    NavMenu, NavItem, NavLinks, NavBtn, NavBtnLink, NavLinksR} from "./NavbarElements"
     import { FaBars } from 'react-icons/fa'
 import { UserContext } from "../context/UserContext";
-import {Nav, Navbar, Container } from 'react-bootstrap'
-import getUserProfile from '../Services'
-
-
-
    
 function Navigation({toggle}){
     const [scrollNav, setScroolNav] = useState(false)
-    const [isAdmin, setisAdmin] = useState(false)
+   
     const changeNav = ()=> {
         if(window.scrollY >= 80){
             setScroolNav(true)
@@ -21,20 +16,17 @@ function Navigation({toggle}){
             setScroolNav(false)
         }
     }
+
     useEffect(() => {
         window.addEventListener('scroll', changeNav)
     }, [])
+
     const toggleHome = () => {
         scroll.scrollToTop();
     }
-   
-    const usertype = localStorage.getItem('isAdmin');
-    if(usertype !== null && usertype === 'admin'){
-       setisAdmin(true)
-    }else{
-        setisAdmin(!isAdmin);
-    }
+    const isAdmin = localStorage.getItem('isAdmin');
     const {user: token = null} = useContext(UserContext);
+    
 
    return (
        <>
@@ -58,9 +50,10 @@ function Navigation({toggle}){
             <NavItem>
                  <NavLinksR to='/profile'>Profile</NavLinksR>
             </NavItem>
-            {isAdmin? <NavItem>
-                 <NavLinksR to='/Products'>Products</NavLinksR>
-            </NavItem> : null}
+            {isAdmin ? <NavItem>
+                 <NavLinksR to='/products'>Products</NavLinksR>
+            </NavItem> : null
+             }
             <NavItem>
                  <NavLinksR to='/logout' >Logout</NavLinksR>
             </NavItem>

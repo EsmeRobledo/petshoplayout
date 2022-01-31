@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const URL_ROOT = `${process.env.REACT_APP_API}/product`;
-
+const URL_LOCAL =`${process.env.REACT_APP_API_LOCAL}/product`
 
  export  const getProducts = async (category) =>{
     try{
@@ -16,8 +16,10 @@ const URL_ROOT = `${process.env.REACT_APP_API}/product`;
 
  export const newProduct = async(formData) =>{
     try{
-      const res = await axios.post(`${URL_ROOT}/newproduct`,formData);
-     return res.message
+       console.log(formData);
+     const res = await axios.post(`${URL_LOCAL}/newproduct`,formData);
+     console.log(res.data);
+     return res.data
      
     }catch(e){
       console.log('1')
@@ -26,6 +28,28 @@ const URL_ROOT = `${process.env.REACT_APP_API}/product`;
  }
 
 
+ export  const getProductsList = async () =>{
+   try{
+      const res = await axios.get(`${URL_ROOT}/productsList`);
+      return  res.data.products
+      
+   }catch(e){
+     console.log('1')
+     console.log('2', e.message)
+   }
+}
+
+
+export  const getProductInfo = async (prodId) =>{
+   try{
+      const res = await axios.get(`${URL_ROOT}/productInfo`, prodId);
+      return  res.data.products
+      
+   }catch(e){
+     console.log('1')
+     console.log('2', e.message)
+   }
+}
 
  
    

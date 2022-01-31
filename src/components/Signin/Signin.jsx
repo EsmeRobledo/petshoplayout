@@ -9,8 +9,7 @@ import {Container, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, Fo
 
 const  Signin = () => {
     const{saveToken, user: token} = useContext(UserContext);
-    const [isAdmin, setisAdmin] = useState(false);
-
+   
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -18,16 +17,17 @@ const  Signin = () => {
         const user = await loginService(dataObject);
         const category = await getCategory(dataObject);
         saveToken(user.detail);
-        userCategory(category.detail._id, category.detail.type)
+        userCategory(category.detail.type)
         e.target.reset();
     };
 
-    const userCategory = (UserId, category)=>{
+    const userCategory = (category)=>{
         if(category === 'admin'){
-            setisAdmin(true)
+            localStorage.setItem('isAdmin', true);
+        }else{
+            localStorage.setItem('isAdmin', false);
         }
-        localStorage.setItem('iduser', UserId);
-        localStorage.setItem('isAdmin', isAdmin);
+        
     }
     const redirect = <Navigate to='/' />
     return(
@@ -37,7 +37,7 @@ const  Signin = () => {
                 <FormContent>
                  <Form onSubmit={onSubmit}>
                         <FormH1>Ingresa los datos de tu cuenta</FormH1>
-                        <FormLabel htmlFor='for'>Email:</FormLabel>
+                        <FormLabel html='for'>Email:</FormLabel>
                         <FormInput type='email'placeholder="email" name="mail" required />
                         <FormLabel html='for'>Contraseña:</FormLabel>
                         <FormInput type='password' placeholder="Password" name="password" required />
