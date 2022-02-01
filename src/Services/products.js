@@ -17,7 +17,7 @@ const URL_LOCAL =`${process.env.REACT_APP_API_LOCAL}/product`
  export const newProduct = async(formData) =>{
     try{
        console.log(formData);
-     const res = await axios.post(`${URL_LOCAL}/newproduct`,formData);
+     const res = await axios.post(`${URL_ROOT}/newproduct`,formData);
      console.log(res.data);
      return res.data
      

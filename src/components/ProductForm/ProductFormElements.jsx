@@ -102,3 +102,26 @@ export const ProductList = styled.div`
         height: 80%;
     }
 `
+
+export const Table = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+  gap: 10px;
+  padding: 1rem;
+`
+
+export const Thead = styled.thead`
+
+`
+
+export const Th = styled.th`
+    background-color: rgb(117, 201, 250);
+`
+
+export const Td = styled.td`
+  border: 1px solid #ffffff;
+  text-align: left;
+  padding: 8px;
+  font-size: 32px;
+`
+

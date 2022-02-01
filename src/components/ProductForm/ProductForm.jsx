@@ -1,5 +1,5 @@
 import React, {useState, useEffect}  from "react";
-import {ProductFormContainer, ProductFormWrapper,WrapperBtn, ProductWrapper, Form, FormLabel, FormInput, ProductList, BtnForm} from "./ProductFormElements"
+import {ProductFormContainer, ProductFormWrapper,WrapperBtn, Table, Td, Th, ProductWrapper, Form, FormLabel, FormInput, ProductList, BtnForm} from "./ProductFormElements"
 import {getProductsList, newProduct} from '../../Services'
 
 const ProductForm = () =>{
@@ -23,16 +23,19 @@ const ProductForm = () =>{
 
     const save = async (e) =>{
        const data = new FormData(e.target);
-        const dataObject = Object.fromEntries(data)
-        const resp = await newProduct(dataObject);
+       const resp = await newProduct(data);
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
         save(e);
+        getProducts();
     }
 
-
+    const handleEditClick = (event) => {
+        event.preventDefault();
+        setEdit(true)
+    }
 
     useEffect (() =>{
         getProducts()
@@ -66,7 +69,35 @@ const ProductForm = () =>{
                 </ProductWrapper>
             </ProductFormWrapper>
             <ProductList>
-                
+                <Table>
+                    <thead>
+                    <tr>
+                        <Th>Name</Th>
+                        <Th>Description</Th>
+                        <Th>Price</Th>
+                        <Th>Qty</Th>
+                        <Th>type</Th>
+                        <Th>Category</Th> 
+                        <Th>Image</Th>
+                        <Th>Actions</Th>   
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {console.log(products)}
+                        {products.map((product) =>(
+                             <tr key={product._id}>
+                                 <Td>{product.productName}</Td>
+                                 <Td>{product.description}</Td>
+                                 <Td>{product.price}</Td>
+                                 <Td>{product.qty}</Td>
+                                 <Td>{product.type}</Td>
+                                 <Td>{product.category}</Td>
+                                 <Td></Td>
+                                 <Td><button type="button" onClick={(event) => handleEditClick(event)}>Edit</button></Td>
+                             </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </ProductList>
         </ProductFormContainer>
         </>
