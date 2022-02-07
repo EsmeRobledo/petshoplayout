@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 
 export const ProductFormContainer = styled.div`
+  display: flex;
+  flex-direction: row;
     
 `
 export const ProductFormWrapper = styled.div`
@@ -71,7 +73,7 @@ export const WrapperBtn = styled.div`
 `
 export const BtnForm = styled.button`
   background: #5B8FBF;
-  padding: 20px 40px;
+  padding: 20px 20px;
   border: none;
   border-radius: 20px;
   color: white;
@@ -115,13 +117,17 @@ export const Thead = styled.thead`
 `
 
 export const Th = styled.th`
-    background-color: rgb(117, 201, 250);
+    background-color: #99cccc;
+    border: 1px solid #99cccc;
+    text-align: left;
+    padding: 8px;
+    font-size: 15px;
 `
 
 export const Td = styled.td`
-  border: 1px solid #ffffff;
+  border: 1px solid #99cccc;
   text-align: left;
   padding: 8px;
-  font-size: 32px;
+  font-size: 20px;
 `
 

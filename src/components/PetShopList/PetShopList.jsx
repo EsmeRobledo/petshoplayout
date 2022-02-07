@@ -12,19 +12,19 @@ function PetShopList(){
     return(
         <>
             <ListContainer id='Shopforpet'>
-                <ListH1>Navega en nuestro inventario de productos por mascota</ListH1>
+                <ListH1>Find what you need for your best friend</ListH1>
                 <ListWrapper>
                     <ListCard>
                         <ListIcon src={Icon1} />
-                        <CategoryLink to='/shopSection/Dog'>Perros</CategoryLink>
+                        <CategoryLink to='/shopSection/Dog'>Dogs</CategoryLink>
                     </ListCard>
                     <ListCard>
                         <ListIcon src={Icon2} />
-                        <CategoryLink to='/shopSection/Cat'>Gatos</CategoryLink>
+                        <CategoryLink to='/shopSection/Cat'>Cats</CategoryLink>
                     </ListCard>
                     <ListCard>
                         <ListIcon src={Icon3} />
-                        <CategoryLink to='/shopSection/Fish'>Peces</CategoryLink>
+                        <CategoryLink to='/shopSection/Fish'>Fish</CategoryLink>
                     </ListCard>
                     <ListCard>
                         <ListIcon src={Icon4} />
@@ -32,7 +32,7 @@ function PetShopList(){
                     </ListCard>
                     <ListCard>
                         <ListIcon src={Icon5} />
-                        <CategoryLink to='/shopSection/SmallPet'>Pequeñas Especies</CategoryLink>
+                        <CategoryLink to='/shopSection/SmallPet'>Small Pets</CategoryLink>
                     </ListCard>
                    
                 </ListWrapper>

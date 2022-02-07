@@ -10,7 +10,6 @@ export const Container = styled.div`
     top: 0;
     z-index: 0;
     overflow: hidden;
-    background: gray;
 `
 
 export const FormWrap = styled.div`
@@ -34,7 +33,7 @@ export const FormContent = styled.div`
 `
 
 export const Form = styled.form`
-  background: #D0E0E3;
+  background: #99cccc;
   max-width: 400px;
   height: auto;
   width: 100%;

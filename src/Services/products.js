@@ -42,14 +42,33 @@ const URL_LOCAL =`${process.env.REACT_APP_API_LOCAL}/product`
 
 export  const getProductInfo = async (prodId) =>{
    try{
-      const res = await axios.get(`${URL_ROOT}/productInfo`, prodId);
-      return  res.data.products
+      console.log('entra');
+      const res = await axios.get(`${URL_ROOT}/productInfo/${prodId}` );
+      console.log(res.data.product);
+      return  res.data.product
       
    }catch(e){
      console.log('1')
      console.log('2', e.message)
    }
 }
+
+
+
+export  const editProductInfo = async (newData, prodId) =>{
+   try{
+      
+      const res = await axios.get(`${URL_ROOT}/productInfo/${prodId}`, newData );
+      console.log(res.data.product);
+      return  res.data.product
+      
+   }catch(e){
+     console.log('1')
+     console.log('2', e.message)
+   }
+}
+
+
 
  
    

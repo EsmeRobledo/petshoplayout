@@ -51,7 +51,7 @@ function Footer (){
                 <SocialLogo to="/" onClick={togleHome}>
                     PetShop
                 </SocialLogo>
-                <WebsiteRightd>Esmeralda Robledo ©{new Date().getFullYear} All rights reserved. </WebsiteRightd>
+                <WebsiteRightd>Esmeralda Robledo ©{new Date().getFullYear()} All rights reserved. </WebsiteRightd>
                 <SocialIcons>
                     <SocialIconLink href="/" target="_blank" arial-label="Facebook"><FaFacebook/></SocialIconLink>
                     <SocialIconLink href="/" target="_blank" arial-label="Instagram"><FaInstagram/></SocialIconLink>

@@ -2,7 +2,7 @@ import axios  from 'axios';
 
 
 const URL_ROOT = `${process.env.REACT_APP_API}/user`;
-//const URL_LOCAL =`${process.env.REACT_APP_API_LOCAL}/user`
+const URL_LOCAL =`${process.env.REACT_APP_API_LOCAL}/user`
 export const SignupService = async (user) =>{
     try{
         const resp = await axios.post(`${URL_ROOT}/signup`, user);
@@ -41,7 +41,8 @@ export const editUserService = async (user) =>{
     try{
          const resp = await fetch(`${URL_ROOT}/editUser`, {
             method:'PUT',
-            headers: { Authorization: 'Bearer ' + localStorage.getItem('token'), 'Content-Type': 'application/json' }, 
+            headers: { Authorization: 'Bearer ' 
+            + localStorage.getItem('token'), 'Content-Type': 'application/json' }, 
             body: JSON.stringify(user)
         })
         const jsonres = await resp.json()
@@ -82,7 +83,8 @@ export const editPassword = async (passdata) =>{
     try{
         const resp = await fetch(`${URL_ROOT}/changepass`, {
             method:'PUT',
-            headers: { Authorization: 'Bearer ' + localStorage.getItem('token'), 'Content-Type': 'application/json' }, 
+            headers: { Authorization: 'Bearer ' 
+            + localStorage.getItem('token'), 'Content-Type': 'application/json' }, 
             body: JSON.stringify(passdata)
         })
         const jsonres = await resp.json()

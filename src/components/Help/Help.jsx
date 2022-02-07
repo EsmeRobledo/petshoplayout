@@ -1,6 +1,7 @@
 import React from 'react'
 import {Helpcontainer, HelpWrapper, HelpH1, WrapperOptions, HelpDivOptions,
     HelpOptH1, HelpLink, Wrapperheadear, Icon} from './HelpElements' 
+import Footer from '../Footer/Footer';
     
 function Help(){
     return(
@@ -40,7 +41,6 @@ function Help(){
                          </HelpDivOptions>
                     </WrapperOptions>
                   </HelpWrapper>
-                  <Icon to="/">Regresar al Inicio</Icon>
             </Helpcontainer>
         </>
     )

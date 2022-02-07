@@ -8,27 +8,18 @@ import {Container, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, Fo
 
 
 const  Signin = () => {
-    const{saveToken, user: token} = useContext(UserContext);
+    const{saveToken, user: {token}} = useContext(UserContext);
    
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const dataObject = Object.fromEntries(formData)
         const user = await loginService(dataObject);
-        const category = await getCategory(dataObject);
-        saveToken(user.detail);
-        userCategory(category.detail.type)
+        saveToken(user.detail.token, user.detail.type);
         e.target.reset();
     };
 
-    const userCategory = (category)=>{
-        if(category === 'admin'){
-            localStorage.setItem('isAdmin', true);
-        }else{
-            localStorage.setItem('isAdmin', false);
-        }
-        
-    }
+  
     const redirect = <Navigate to='/' />
     return(
         token ? redirect :

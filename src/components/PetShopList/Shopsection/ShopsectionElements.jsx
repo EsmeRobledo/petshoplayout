@@ -9,18 +9,19 @@ export const ShopWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border-line: 2px
+    border-line: 2px;
 
 `  
 export const ShopCard = styled.div`
     background: #DFEBED;
+    height: 750px;
     display: flex;
     margin: 50px auto;
     flex-direction: row;
     gap: 10px;
     border-radius: 2em;
     align-items: center;
-    max-height: 340px;
+    max-height: 440px;
     padding: 30px;
 
     &:hover{
@@ -31,7 +32,7 @@ export const ShopCard = styled.div`
 `
 
 export const ProductImg = styled.img`
-    height: 50%;
+    height: 40%;
     width: 250px;
     border-radius: 8px;
     border: 1px solid #ddd;
@@ -62,4 +63,31 @@ export const ProducPrice = styled.p`
 export const LinkProduct = styled(Link)`
  text-decoration: none;
  justify-content: center;
+ text-decoration-line: none
+
+`
+
+export const ButtonAdd = styled(Link)`
+    background: #5B8FBF;
+    padding: 20px 20px;
+    border: 2px;
+    border-radius: 4px;
+    color: white;
+    font-size: 40 px;
+    margin-top: 10px;
+    gap: 20px;
+    cursor: pointer; 
+    text-decoration: none;
+    justify-content: center;
+    text-decoration-line: none
+
+    @media screen and (max-width: 400px){
+    font-size: 16 px;
+    margin-top: 0;
+    gap: 5px;
+    }
+`
+
+export const BtnWrapper = styled.div`
+
 `

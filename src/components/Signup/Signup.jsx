@@ -2,18 +2,16 @@ import React, {useContext} from 'react'
 import {Navigate} from 'react-router-dom'
 import {SignupService} from '../../Services'
 import { UserContext } from '../../context/UserContext';
-import {Container, FormWrap, FormContent, Form, FormH1, FormLabel, FormInput, FormButtom, DivWrapper, Divformwrap } from './SignupElements'
+import {Container, FormWrap, Form, FormLabel, FormInput, FormButtom, DivWrapper, Divformwrap } from './SignupElements'
 
 const  Signup = () => {
-    const{saveToken, user: token} = useContext(UserContext);
+    const{saveToken, user: {token}} = useContext(UserContext);
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const dataObject = Object.fromEntries(formData);
         const user = await SignupService(dataObject)
-        saveToken(user.detail)
-        console.log('data: '+ dataObject)
-        localStorage.setItem('isAdmin', false);
+        saveToken(user.detail.token, user.detail.type)
         e.target.reset(); 
      };
     const redirect = <Navigate to='/' />
@@ -21,9 +19,7 @@ const  Signup = () => {
         token ? redirect :
             <Container>
                 <FormWrap>
-                <FormContent>
                  <Form onSubmit={onSubmit}>
-                    <FormH1>Registrate para comprar en linea</FormH1>
                     <DivWrapper>
                       <Divformwrap>
                         <FormLabel htmlFor='for'>Nombre:</FormLabel>
@@ -52,7 +48,7 @@ const  Signup = () => {
                      </Divformwrap>  
                 </DivWrapper>     
                     </Form>
-                </FormContent>
+               
                 </FormWrap>
             </Container>
    )

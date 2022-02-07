@@ -29,8 +29,7 @@ const UserProfile = () =>{
     }
     if(modPass){
         const formData = new FormData(e.target);
-        const dataObject = Object.fromEntries(formData)
-        editPassword(dataObject);
+        editPassword(formData);
        alert("Password have been modified")
        setModPass(false)
        return null

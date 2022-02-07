@@ -1,10 +1,11 @@
 import React, {useState, useEffect}  from "react";
 import {ProductFormContainer, ProductFormWrapper,WrapperBtn, Table, Td, Th, ProductWrapper, Form, FormLabel, FormInput, ProductList, BtnForm} from "./ProductFormElements"
-import {getProductsList, newProduct} from '../../Services'
+import {getProductsList, newProduct, getProductInfo} from '../../Services'
 
 const ProductForm = () =>{
     const [edit, setEdit] = useState()
     const [products, setProducts] = useState([])
+    const [productId, setroductId] = useState('')
     const [formData, setFormData] = useState({
         productName: '',
         description: '',
@@ -26,21 +27,60 @@ const ProductForm = () =>{
        const resp = await newProduct(data);
     }
 
+    const editProduct = async (formData) =>{
+        const resp = await getProductInfo(formData, productId);
+        alert(" Product modified ")
+        setEdit(false)
+        setFormData(
+            {
+            nombre: '',
+            apellido: '',
+            email: '',
+            telefono: '',
+            fecha: '',
+            hora: '',
+            nopersonas: '' ,
+            }
+        )
+     }
+
     const onSubmit = (e) => {
         e.preventDefault();
-        save(e);
+        if(edit){
+            editProduct(formData)
+        }else{
+            save(e);
+        }
+        
         getProducts();
     }
 
-    const handleEditClick = (event) => {
+    const handleEditClick = (event, product) => {
         event.preventDefault();
         setEdit(true)
+        setroductId(product._id)
+        setFormData({
+            productName : product.productName,
+            description : product.description,
+            price : product.price,
+            qty : product.qty,
+            category : product.category,
+            type : product.type,
+            img : product.img,
+        }
+        )
     }
 
     useEffect (() =>{
         getProducts()
     }, [])
     
+    const onChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return(
         <>
@@ -49,21 +89,22 @@ const ProductForm = () =>{
                 <ProductWrapper>
                    <Form onSubmit={onSubmit} >
                    <FormLabel>Product Name:</FormLabel>
-                    <FormInput name='productName'  required type='text'/>
+                    <FormInput name='productName' value={formData.productName || ""}  required type='text' onChange={onChange}/>
                     <FormLabel>Description:</FormLabel>
-                    <FormInput name='description' required type='text'/>
+                    <FormInput name='description' value={formData.description || ""}  required type='text' onChange={onChange}/>
                     <FormLabel>Price:</FormLabel>
-                    <FormInput name='price'  required type='price'/>
+                    <FormInput name='price' value={formData.price || ""}   required type='price' onChange={onChange}/>
                     <FormLabel>Quantity:</FormLabel>
-                    <FormInput name='qty'  required type='qty'/>
+                    <FormInput name='qty' value={formData.qty || ""}  required type='qty' onChange={onChange}/>
                     <FormLabel>Category:</FormLabel>
-                    <FormInput name='category'  required type='text'/>
+                    <FormInput name='category' value={formData.category || "" }   required type='text' onChange={onChange}/>
                     <FormLabel>type:</FormLabel>
-                    <FormInput name='type'  required type='text'/>
+                    <FormInput name='type' value={formData.type || ""}  required type='text' onChange={onChange}/>
                     <FormLabel>Image:</FormLabel>
-                    <input name='img' type='file'/>
+                    <input name='img'  type='file' />
                     <WrapperBtn>
-                        <BtnForm type='submit'>Add Product</BtnForm>
+                       {edit ? null : <BtnForm type='submit'>Add Product</BtnForm> }
+                       {edit ? <BtnForm type='submit'>Save</BtnForm> : null } 
                     </WrapperBtn>
                    </Form>
                 </ProductWrapper>
@@ -78,12 +119,11 @@ const ProductForm = () =>{
                         <Th>Qty</Th>
                         <Th>type</Th>
                         <Th>Category</Th> 
-                        <Th>Image</Th>
+                        <Th></Th>
                         <Th>Actions</Th>   
                     </tr>
                     </thead>
                     <tbody>
-                        {console.log(products)}
                         {products.map((product) =>(
                              <tr key={product._id}>
                                  <Td>{product.productName}</Td>
@@ -93,7 +133,7 @@ const ProductForm = () =>{
                                  <Td>{product.type}</Td>
                                  <Td>{product.category}</Td>
                                  <Td></Td>
-                                 <Td><button type="button" onClick={(event) => handleEditClick(event)}>Edit</button></Td>
+                                 <Td><button type="button" onClick={(event) => handleEditClick(event, product)}>Edit</button></Td>
                              </tr>
                         ))}
                     </tbody>

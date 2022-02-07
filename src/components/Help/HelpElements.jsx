@@ -4,14 +4,17 @@ import {Link} from 'react-router-dom'
 
 export const Helpcontainer = styled.div`
     background: #D0E0E3;
-    min-height: 692px;
-    position: fixed;
-    bottom: 0;
+    height: 550px;
+    bottom: 30px;
     left: 0;
     right: 0;
     top: 0;
     z-index: 0;
     overflow: hidden;
+    @media screen and (max-width: 400px){
+        height: 2200px; 
+    }
+
   `
 
 export const Wrapperheadear = styled.div`
@@ -24,6 +27,10 @@ export const HelpH1 = styled.h1`
     text-align: center;
     margin-bottom: 16px;
     color: #5B8FBF;
+
+    @media screen and (max-width: 400px){
+        font-size: 18px; 
+    }
 `
 
 export const HelpWrapper = styled.div`
@@ -36,17 +43,23 @@ export const HelpWrapper = styled.div`
     max-width: 1100px;
     margin: 0 auto;
     background: #D0E0E3;
+    @media screen and (max-width: 400px){
+        justify-content: left; 
+    }
 `
 
 
 export const WrapperOptions = styled.div`
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
 
     @media screen and (max-width: 820px){
         flex-direction: column;
+        justify-content: left;
     }
-    box-sizing: border-box;
+    
+    
 `
 
 export const HelpDivOptions = styled.div`
@@ -58,10 +71,11 @@ export const HelpDivOptions = styled.div`
     width: 160px;
     box-sizing: border-box;
    
-    @media screen and (max-width: 420px){
+    @media screen and (max-width: 400px){
         margin: 0;
         width: 10px;
         padding: 10px;
+        justify-content: left;
     }
 `
 
@@ -69,6 +83,10 @@ export const HelpOptH1 = styled.h1`
     font-size: 24px;
     margin-bottom: 20px;
     color: #5B8FBF;
+
+    @media screen and (max-width: 400px){
+        font-size: 15px; 
+    }
 `
 
 export const HelpLink = styled(Link)`
@@ -80,6 +98,10 @@ export const HelpLink = styled(Link)`
     &:hover{
         color: blue;
         transition: 0.3s ease-out;
+        
+    }
+    @media screen and (max-width: 400px){
+        font-size: 12px; 
     }
 `
 
@@ -92,4 +114,8 @@ export const Icon = styled(Link)`
   margin-top: 10px
   font-weight: bold;
   text-decoration: none;
+
+  @media screen and (max-width: 400px){
+    font-size: 12px; 
+}
 `
